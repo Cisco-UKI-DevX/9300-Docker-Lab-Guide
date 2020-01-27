@@ -28,7 +28,7 @@ First thing we need to do is get our docker container onto the device that we're
 
 Couple of brief things to cover that are important here.
  * Every docker container has a dockerfile which looks like the below to describe how the container should behave when deployed. For example see our iperfv3 containers dockerfile below.
- * Docker containers can be made available on Docker hub which acts like a library where anyone can publish their (container)[https://hub.docker.com/r/mlabbe/iperf3].
+ * Docker containers can be made available on Docker hub which acts like a library where anyone can [publish their container](https://hub.docker.com/r/mlabbe/iperf3).
  
  ```
  FROM alpine:latest
