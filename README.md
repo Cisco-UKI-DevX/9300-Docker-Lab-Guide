@@ -69,7 +69,7 @@ docker save mlabbe/iperf3:latest -o iperf3.tar
 As you can see from the below graphic, we then have our iperf3.tar file in our working directory ready for deployment.
 
 
-[!image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/docker-image.gif?raw=true)
+![image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/docker-image.gif?raw=true)
 
 Alternatively, if you have a dockerfile like the one above you can build the image by using the command while in the same working directory as the file which must be named `Dockerfile`
 
@@ -83,7 +83,7 @@ You can then build the .tar package with the same save argument
 docker save mlabbe/iperf3:latest -o iperf3.tar
 ```
 
-[!image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/dockerfile.gif?raw=true)
+![image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/dockerfile.gif?raw=true)
 
 Once you have your package you can transfer it to the device using TFTP, USB or any other method thats supported. Just ensure the .tar file is in the flash: directory as we'll need it later.
 
@@ -102,6 +102,9 @@ cat9k(config-config-app-hosting-vlan-access-ip)# app-default-gateway 10.10.20.25
 cat9k(config-app-hosting)# app-resource docker
 cat9k(config-app-hosting-docker)#  run-opts "--restart=unless-stopped -p 5201:5201/tcp -p 5201:5201/udp"
 ```
+
+
+![image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/app-hosting-config.gif?raw=true)
 
 Now we've configured our interfaces and app profile parameters its time to install the container, to do this simply runt the below command, as I mentioned earlier in the sandbox its tricky to transfer across our .tar package but convieniently a iperf3 package named 'iperf3nick.tar' can be used in place. If your using your own environment simply replace the path below with you own.
 
