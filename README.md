@@ -2,30 +2,28 @@
 
 # Deploying Docker containers on Catalyst 9300/IOS-XE
 
-As we’ve discussed in the [past](https://github.com/sttrayno/Guestshell-Lab-Guide) when we dive into the world network automation we often need an environment where we can package and run our software or scripts that we build. This is what makes one of the most interesting features of the new Catalyst 9300 switch is the ability to run standard docker containers on the devices x86 based CPU. 
+As we’ve discussed in the [past](https://github.com/sttrayno/Guestshell-Lab-Guide) when we dive into the world network automation we often need an environment where we can package and run our software or scripts that we build. This is what makes one of the most interesting features of the new Catalyst 9300 switch is this ability to run standard docker containers on the devices x86 based CPU. 
 
-One of the main drivers for including x86 architecture this was to allow for the running of applications on the switch. As of 16.12.1 the Catalyst 9300 supports a native docker engine allowing you to deploy docker applications straight onto the infrastructure which I plan on guiding you through the process of getting started with in this lab.
+One of the main drivers for including x86 architecture was to allow for the running of applications on the switch. As of 16.12.1 the Catalyst 9300 supports a native docker engine allowing you to deploy docker applications straight onto the infrastructure which I plan on guiding you through the process of getting started with in this lab.
 
-It should be noted that usecases for this feature aren’t just limited to network automation and include IOT, Security and performance monitoring.
+It should be noted that usecases for this feature aren’t just limited to network automation and include IOT, Security and performance monitoring. We may get into more use-cases on further exercises. But for today we'll be focusing on how to run iperf3 to carry out very basic bitrate testing on the network to our network device, this could be a good usecase for WAN performance monitoring. The container we're going to run can be found [here](https://hub.docker.com/r/mlabbe/iperf3)
 
 ## Prerequisites
 
-Before we get started we'll need a test environment, one of the easiest test environments you'll find is on the Cisco DevNet Sandbox which has a dedicated sandbox for 9300 application hosting. This are completely free and can in some cases be accessed within seconds. https://developer.cisco.com/docs/sandbox/#!overview/all-networking-sandboxes
+Before we get started we'll need a test environment, one of the easiest test environments you'll find is on the Cisco DevNet Sandbox which has a dedicated sandbox for 9300 application hosting. This are completely free and can in some cases be accessed within minutes. https://developer.cisco.com/docs/sandbox/#!overview/all-networking-sandboxes
 
-Please note you are free to use this with your own hardware or test environment. However the commands in this lab guide have been tested for the DevNet sandbox. 
+Please note you are free to use this with your own hardware or test environment. However the commands in this lab guide have been tested for the DevNet sandbox. They may not directly translate to your own environment but if you have any issues, feel free to reach out
 
-If you're lucky enough to have a 9300 ready to run feel free to use it against this guide, however please note: The device requires a the 120GB USB external storage installed on the back of the device, thats why for this lab we will be utilising the DevNet 9300 sandbox. In addition to the external storage a DNA advantage license is needed.
+If you're lucky enough to have a 9300 ready to run feel free to use it against this guide, however please note: The device requires a the 120GB USB external storage installed on the back of the device, thats why for this lab we will be utilising the DevNet 9300 sandbox. In addition to the external storage a DNA advantage license is also needed on the switch.
 
 In reality we have a couple of options for deploying containers, with the traditional IOS-XE CLI, through the switch webUI and with Cisco DNA-Centre controller. In this guide we will cover just the CLI deployment to give you an idea how things work under the hood but you're welcome to use either of the GUI options.
 
-Within this guide we'll be focusing on how to run iperf3 to carry out very basic bitrate testing on the network to our network device, this could be a good usecase for WAN performance monitoring. The container we're going to run can be found [here](https://hub.docker.com/r/mlabbe/iperf3)
-
 ### Step 1 - Packaging and transferring the Docker container to the device
 
-First thing we need to do is get our docker container onto the device that we're going to deploy on. To do this we need to have at least a basic understanding of docker and docker containers. A great overview can be found in the docker documentation [here](https://docs.docker.com/engine/docker-overview/). In the context of the rest of this guide and if you're new to containers just think of them as a way in which we can build, ship, and run applications (dependancies and all).
+First thing we need to do is get our docker container onto the device that we're going to deploy on. To do this we need to have at least a basic understanding of docker and docker containers. A great overview can be found in the docker documentation [here](https://docs.docker.com/engine/docker-overview/). In the context of the rest of this guide and if you're new to containers just think of them as a way in which we can build, ship, and run applications (dependancies, OS and all).
 
 Couple of brief things to cover that are important here.
- * Every docker container has a dockerfile which looks like the below to describe how the container should behave when deployed. For example see our iperfv3 containers dockerfile below.
+ * Every docker container has a dockerfile which resembles the below except to describe how the container should behave when deployed. For example see our iperfv3 containers dockerfile below.
  * Docker containers can be made available on Docker hub which acts like a library where anyone can [publish their container](https://hub.docker.com/r/mlabbe/iperf3).
  
  ```
@@ -52,7 +50,7 @@ ENTRYPOINT ["iperf3"]
 CMD ["-s"]
 ```
 
-Now we have a basic understanding of what we're going to deploy let's get started. To deploy our container on the Cat9K we need to build our dockerfile as a .tar package and transfer it over to the device. If you're using the sandbox like me this can be a little tricky as we dont have internet access to build our container and it's not a straight forward process of transfering a file via TFTP from your host. Luckily enough the sandbox has an image of iPerfV3 on the flash: already so we'll use that, but if you're doing this on your own box here's the process.
+Now we have a basic understanding of what we're going to deploy let's get started. To deploy our container on the Cat9K we need to build our dockerfile as a .tar package and transfer it over to the device. If you're using the sandbox like me this can be a little tricky as we dont have internet access to build our container and it's not a straight forward process of transfering a file via TFTP from your host as we're over VPN to the device. Luckily enough the sandbox has an image of iperfv3 on the flash: already so we'll use that, but if you're doing this on your own box here's the process.
 
 First off we must pull down the container we want to deploy from the docker hub. Remember you must have docker installed on your machine, for further details see the docker (documentation)[https://docs.docker.com/install/]
 
@@ -152,9 +150,9 @@ Keep reference these additional commands which can be used to stop, deactivate a
 
 Now that iperf3 is running as a container all thats left to do is run a test from our host to the switch to test out the bitrate that we're recieving. 
 
-Make sure iperf3 is installed. If you're not sure how to you can find a handy guide from the iperf site [here](https://iperf.fr/iperf-download.php). 
+Make sure iperf3 is installed on your host machine. If you're not sure how to you can find a handy guide from the iperf site [here](https://iperf.fr/iperf-download.php). 
 
-Then all you need to do is specify the kind of test you wish to run and outline the remote host for example the below command should work on MacOS and Linux which will report back with the bandwidth of the link every second for a total of 30 seconds. There's a plethora of documentation online which will allow you to run many different tests.
+Then all you need to do is specify the kind of test you wish to run and outline the remote host, for example the below command should work on MacOS and Linux which will report back with the bandwidth of the link every second for a total of 30 seconds. There's a plethora of documentation online which will allow you to run many different tests.
 
 ```
 iperf3 -c 10.10.20.101 -i 1 -t 30
