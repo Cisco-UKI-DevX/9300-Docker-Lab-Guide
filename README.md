@@ -148,15 +148,20 @@ Congratulations, your app has now been deployed. Keep reference these additional
    cat9k# app-hosting deactivate appid iperf
    cat9k# app-hosting uninstall appid iperf
 ```
-## Testing our application
+## Step 3 - Testing our application
 
-Now that iperf3 is running as a container all thats left to do is run a test from our host to 
+Now that iperf3 is running as a container all thats left to do is run a test from our host to the switch to test out the bitrate that we're recieving. 
 
-Make sure iperf3 is installed. If you're not sure how to you can find a handy guide from the iperf site [here](https://iperf.fr/iperf-download.php). Then all you need to do is specify the kind of test you wish to run and outline the remote host for example the below command should work on MacOS and Linux which will report back with the bandwidth of the link every second for a total of 30 seconds. There's a plethora of documentation online which will allow you to run many different tests.
+Make sure iperf3 is installed. If you're not sure how to you can find a handy guide from the iperf site [here](https://iperf.fr/iperf-download.php). 
+
+Then all you need to do is specify the kind of test you wish to run and outline the remote host for example the below command should work on MacOS and Linux which will report back with the bandwidth of the link every second for a total of 30 seconds. There's a plethora of documentation online which will allow you to run many different tests.
 
 ```
 iperf3 -c 10.10.20.101 -i 1 -t 30
 ```
+
+So you have a bit of knowledge in what you are running here, iperf can run in either client or server mode. As you might of seen from the dockerfile in step 1, we're running iperf3 in server mode by specifying the argument '-s' therefore we should run iperf in client mode with the argument '-c' on our host machine. 
+
 After running the command if a bitrate is reported back as shown below your application is operating correctly and has connectivity.
 
 ![image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/iperf.gif?raw=true)
