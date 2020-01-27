@@ -66,6 +66,16 @@ Next we want to build a .tar package from the image we've pulled from docker hub
 
 As you can see from the below graphic, we then have our iperf3.tar file in our working directory ready for deployment.
 
+Alternatively, if you have a dockerfile like the one above you can build the image by using the command while in the same working directory as the file which must be named `Dockerfile`
+
+```$ docker build -t iperf3:1:0 .```
+
+You can then build the .tar package with the same save argument
+
+```docker save mlabbe/iperf3:latest -o iperf3.tar```
+
+Once you have your package you can transfer it to the device using TFTP, USB or any other method thats supported. Just ensure the .tar file is in the flash: directory as we'll need it later.
+
 ## Method 1 - Deploying via the CLI
 
 Next up we need to do is configure our app-hosting parameters for iperf and assign a static IP address address/default gateway to the app.
