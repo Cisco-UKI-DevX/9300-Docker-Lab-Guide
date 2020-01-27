@@ -117,3 +117,5 @@ app-hosting start appid iperf
 ## Method 2 - Deploying via the GUI
 
 For now our application isn't very interesting that we're running, they're are a few on the box already so I'd recommend deploying a couple to get yourself used to the process and trying out some of the different options. At somepoint we'll expand these exercises by building our own custom application packaged in a docker container, then look to deploy it in this hosting environement but for now I hope this lab has given you a brief taster of working with the Docker environment in the Catalyst 9300.
+
+## Testing our application
