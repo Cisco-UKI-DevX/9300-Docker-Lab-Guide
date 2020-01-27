@@ -139,7 +139,9 @@ When that completes, validate that our app is running with the below show comman
 
 ![image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/show-app-hosting.gif?raw=true)
 
-Congratulations, your app has now been deployed. Keep reference these additional commands which can be used to stop, deactivate and uninstall our applcation as needed. You may now proceed to the 'Testing our application section'
+Congratulations, your app has now been deployed and iperf is running in server mode on port 5201. You may now proceed to the 'Testing our application section'
+
+Keep reference these additional commands which can be used to stop, deactivate and uninstall our applcation as needed.
 
 ```
    cat9k# app-hosting stop appid iperf
@@ -160,7 +162,7 @@ iperf3 -c 10.10.20.101 -i 1 -t 30
 
 So you have a bit of knowledge in what you are running here, iperf can run in either client or server mode. As you might of seen from the dockerfile in step 1, we're running iperf3 in server mode by specifying the argument '-s' therefore we should run iperf in client mode with the argument '-c' on our host machine. 
 
-After running the command if a bitrate is reported back as shown below your application is operating correctly and has connectivity.
+After running the command if a bitrate is reported back as shown below your application is operating correctly and has connectivity. 
 
 ![image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/iperf.gif?raw=true)
 
