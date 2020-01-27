@@ -58,21 +58,29 @@ Now we have a basic understanding of what we're going to deploy let's get starte
 
 First off we must pull down the container we want to deploy from the docker hub. Remember you must have docker installed on your machine, for further details see the docker (documentation)[https://docs.docker.com/install/]
 
-```docker pull mlabbe/iperf3```
+```
+docker pull mlabbe/iperf3
+```
 
 Next we want to build a .tar package from the image we've pulled from docker hub, this can be done with the command:
 
-```docker save mlabbe/iperf3:latest -o iperf3.tar```
+```
+docker save mlabbe/iperf3:latest -o iperf3.tar
+```
 
 As you can see from the below graphic, we then have our iperf3.tar file in our working directory ready for deployment.
 
 Alternatively, if you have a dockerfile like the one above you can build the image by using the command while in the same working directory as the file which must be named `Dockerfile`
 
-```$ docker build -t iperf3:1:0 .```
+```
+$ docker build -t iperf3:1:0 .
+```
 
 You can then build the .tar package with the same save argument
 
-```docker save mlabbe/iperf3:latest -o iperf3.tar```
+```
+docker save mlabbe/iperf3:latest -o iperf3.tar
+```
 
 Once you have your package you can transfer it to the device using TFTP, USB or any other method thats supported. Just ensure the .tar file is in the flash: directory as we'll need it later.
 
