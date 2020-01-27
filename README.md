@@ -54,6 +54,10 @@ ENTRYPOINT ["iperf3"]
 CMD ["-s"]
 ```
 
+Now we have a basic understanding of what we're going to deploy let's get started. First off I'd recommend logging into the DevBox which is convienently included within the 9300 sandbox, this has everything we need already preinstalled so if you're just getting started with things will make your life an awful lot easier.
+
+
+
 ### Step 2 - CLI config
 
 Next up we need to do is configure our app-hosting parameters for iperf and assign a static IP address address/default gateway to the app.
