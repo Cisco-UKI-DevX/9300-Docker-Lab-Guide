@@ -112,8 +112,9 @@ Now we've configured our interfaces and app profile parameters its time to insta
 app-hosting install appid iperf package flash:iperf3nick.tar
 
 ```
+![image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/app-hosting-install.gif?raw=true)
 
-Now that's done lets activate our iperf app
+Now that's done lets activate our iperf app 
 
 ```
 app-hosting activate appid iperf
