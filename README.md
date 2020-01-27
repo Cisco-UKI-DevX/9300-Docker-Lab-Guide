@@ -1,3 +1,5 @@
+*This lab is part of a series of guides from the [Network Automation and Tooling workshop series](https://github.com/sttrayno/Network-Automation-Tooling)*
+
 # Deploying Docker containers on Catalyst 9300/IOS-XE
 
 As we’ve discussed in the [past](https://github.com/sttrayno/Guestshell-Lab-Guide) when we're diving into network automation we often need an environment where we can package and run our software and scripts that we build. One of the most features of the Catalyst 9300 switch is the ability to run standard docker containers on the device.
