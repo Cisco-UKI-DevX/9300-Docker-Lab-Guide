@@ -28,7 +28,7 @@ First thing we need to do is get our docker container onto the device that we're
 
 Couple of brief things to cover that are important here.
  * Every docker container has a dockerfile which looks like the below to describe how the container should behave when deployed. For example see our iperfv3 containers dockerfile below.
- * Docker containers can be made available on Docker hub (which acts like a library where anyone can publish their container)[https://hub.docker.com/r/mlabbe/iperf3].
+ * Docker containers can be made available on Docker hub which acts like a library where anyone can publish their (container)[https://hub.docker.com/r/mlabbe/iperf3].
  
  ```
  FROM alpine:latest
@@ -54,11 +54,19 @@ ENTRYPOINT ["iperf3"]
 CMD ["-s"]
 ```
 
-Now we have a basic understanding of what we're going to deploy let's get started. First off I'd recommend logging into the DevBox which is convienently included within the 9300 sandbox, this has everything we need already preinstalled so if you're just getting started with things will make your life an awful lot easier.
+Now we have a basic understanding of what we're going to deploy let's get started. To deploy our container on the Cat9K we need to build our dockerfile as a .tar package and transfer it over to the device. If you're using the sandbox like me this can be a little tricky as we dont have internet access to build our container and it's not a straight forward process of transfering a file via TFTP from your host. Luckily enough the sandbox has an image of iPerfV3 on the flash: already so we'll use that, but if you're doing this on your own box here's the process.
 
+First off we must pull down the container we want to deploy from the docker hub. Remember you must have docker installed on your machine, for further details see the docker (documentation)[https://docs.docker.com/install/]
 
+```docker pull mlabbe/iperf3```
 
-### Step 2 - CLI config
+Next we want to build a .tar package from the image we've pulled from docker hub, this can be done with the command:
+
+```docker save mlabbe/iperf3:latest -o iperf3.tar```
+
+As you can see from the below graphic, we then have our iperf3.tar file in our working directory ready for deployment.
+
+## Method 1 - Deploying via the CLI
 
 Next up we need to do is configure our app-hosting parameters for iperf and assign a static IP address address/default gateway to the app.
 
