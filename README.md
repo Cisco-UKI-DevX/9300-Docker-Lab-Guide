@@ -14,11 +14,11 @@ Before we get started we'll need a test environment, one of the easiest test env
 
 Please note you are free to use this with your own hardware or test environment. However the commands in this lab guide have been tested for the DevNet sandbox. 
 
-If you're lucky enough to have a 9300 ready to run feel free to use it against this guide, however please note: The device requires a the 120GB USB external storage installed on the back of the device, thats why for this lab we will be utilising the DevNet 9300 sandbox.
+If you're lucky enough to have a 9300 ready to run feel free to use it against this guide, however please note: The device requires a the 120GB USB external storage installed on the back of the device, thats why for this lab we will be utilising the DevNet 9300 sandbox. In addition to the external storage a DNA advantage license is needed.
 
 In reality we have a couple of options for deploying containers, with the traditional IOS-XE CLI, through the switch webUI and with Cisco DNA-Centre controller. In this guide we will cover just the CLI deployment to give you an idea how things work under the hood but you're welcome to use either of the GUI options.
 
-Within this guide we'll be focusing on how to run iperf3 to carry out very basic bitrate testing on the network. The container we're going to run can be found [here](https://hub.docker.com/r/mlabbe/iperf3)
+Within this guide we'll be focusing on how to run iperf3 to carry out very basic bitrate testing on the network to our network device, this could be a good usecase for WAN performance monitoring. The container we're going to run can be found [here](https://hub.docker.com/r/mlabbe/iperf3)
 
 ### Step 1 - Packaging and transferring the Docker container to the device
 
@@ -166,4 +166,4 @@ After running the command if a bitrate is reported back as shown below your appl
 
 ## Final thoughts 
 
-For now our application isn't very interesting that we're running and provides limited insight, but if you're using the sandbox they're are a few more apps already so I'd recommend deploying a couple to get yourself used to the process and trying out some of the different options. At somepoint we'll expand these exercises by building our own custom application packaged in a docker container, then look to deploy it in this hosting environment but for now I hope this lab has given you a brief taster of working with the Docker environment in the Catalyst 9300.
+For now our application isn't very interesting and provides limited insight, but if you're using the sandbox they're are a few more apps on the flash memory already so I'd recommend deploying a couple to get yourself used to the process and trying out some of the different options. At somepoint we'll expand these exercises by building our own custom application packaged in a docker container, then look to deploy it in this hosting environment but for now I hope this lab has given you a brief taster of working with the Docker environment in the Catalyst 9300.
