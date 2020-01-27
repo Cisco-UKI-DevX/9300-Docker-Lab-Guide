@@ -24,11 +24,11 @@ Within this guide we'll be focusing on how to run iPerfv3 to carry out very basi
 
 ### Step 1 - Packaging and transferring the Docker container to the device
 
-First thing we need to do is get our docker container onto the device that we're going to deploy on. To do this we need to have at least a basic understanding of docker and docker containers. A great overview can be found in the docker documentation [here](https://docs.docker.com/engine/docker-overview/). 
+First thing we need to do is get our docker container onto the device that we're going to deploy on. To do this we need to have at least a basic understanding of docker and docker containers. A great overview can be found in the docker documentation [here](https://docs.docker.com/engine/docker-overview/). In the context of the rest of this guide and if you're new to containers just think of them as a way in which we can build, ship, and run applications (dependancies and all).
 
-Couple of brief things to cover 
+Couple of brief things to cover that are important here.
  * Every docker container has a dockerfile which looks like the below to describe how the container should behave when deployed. For example see our iperfv3 containers dockerfile below.
- * Docker containers can be made available on a container exchange, the most popular is docker hub
+ * Docker containers can be made available on Docker hub (which acts like a library where anyone can publish their container)[https://hub.docker.com/r/mlabbe/iperf3].
  
  ```
  FROM alpine:latest
