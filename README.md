@@ -73,7 +73,7 @@ As you can see from the below graphic, we then have our iperf3.tar file in our w
 Alternatively, if you have a dockerfile like the one above you can build the image by using the command while in the same working directory as the file which must be named `Dockerfile`
 
 ```
-$ docker build -t iperf3:1:0 .
+docker build -t iperf3:1:0 .
 ```
 
 You can then build the .tar package with the same save argument
@@ -91,13 +91,13 @@ Next up we need to do is configure our app-hosting parameters for iperf and assi
 Also take note of the runtime parameter required for the Docker container is configured under app-resource in run-opts which we need to configure here.
 
 ```
-app-hosting appid iperf
- app-vnic AppGigEthernet vlan-access
-  vlan 4000 guest-interface 0
-   guest-ipaddress 10.10.20.101 netmask 255.255.255.0
- app-default-gateway 10.10.20.254 guest-interface 0
- app-resource docker
-  run-opts "--restart=unless-stopped -p 5201:5201/tcp -p 5201:5201/udp"
+cat9k(config)#app-hosting appid iperf     
+cat9k(config-app-hosting)# app-vnic AppGigEthernet vlan-access
+cat9k(config-config-app-hosting-vlan-access)#  vlan 4000 guest-interface 0
+cat9k(config-config-app-hosting-vlan-access-ip)# guest-ip address 10.10.20.101 netmask 255.255.255.0
+cat9k(config-config-app-hosting-vlan-access-ip)# app-default-gateway 10.10.20.254 guest-interface 0
+cat9k(config-app-hosting)# app-resource docker
+cat9k(config-app-hosting-docker)#  run-opts "--restart=unless-stopped -p 5201:5201/tcp -p 5201:5201/udp"
 ```
 
 Now we've configured our interfaces and app profile parameters its time to install the container, to do this simply runt the below command, as I mentioned earlier in the sandbox its tricky to transfer across our .tar package but convieniently a iperf3 package named 'iperf3nick.tar' can be used in place. If your using your own environment simply replace the path below with you own.
