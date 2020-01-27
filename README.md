@@ -25,6 +25,9 @@ Within this guide we'll be focusing on how to run iPerfv3 to carry out very basi
 ### Step 1 - Packaging and transferring the Docker container to the device
 
 
+
+### Step 2 - CLI config
+
 Next up we need to do is configure our app-hosting parameters for iperf and assign a static IP address address/default gateway to the app.
 
 Also take note of the runtime parameter required for the Docker container is configured under app-resource in run-opts which we need to configure here.
