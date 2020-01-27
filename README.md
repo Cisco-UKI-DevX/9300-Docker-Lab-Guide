@@ -8,7 +8,7 @@ The Catalyst 9000 switches have a x86 based CPU. One of the main drivers for inc
 
 It should be noted that usecases for this feature aren’t just limited to network automation and include IOT, Security and performance monitoring.
 
-## Prerequesites
+## Prerequiesites
 
 Before we get started we'll need a test environment, one of the easiest test environments you'll find is on the Cisco DevNet Sandbox which has a dedicated sandbox for 9300 application hosting. This are completely free and can in some cases be accessed within seconds. https://developer.cisco.com/docs/sandbox/#!overview/all-networking-sandboxes
 
@@ -18,13 +18,48 @@ If you're lucky enough to have a 9300 ready to run this please note: The device 
 
 In this guide we have 2 methods of running the containers, with the CLI or through the GUI. For completeness we'll cover both in this guide, your welcome to just do one (GUI is by far the easiest).
 
+Within this guide we'll be focusing on how to run iPerfv3 to carry out very basic testing on the network. The container we're going to run can be found [here](https://hub.docker.com/r/mlabbe/iperf3)
+
 ## Method 1 - Deploying via the CLI
 
 ### Step 1 - Packaging and transferring the Docker container to the device
 
-Before we get started first thing we need to do is package our docker container and transfer to the device itself. 
 
-When it comes to transfering the .tar file we've created on the sandbox this is actually trickier than it sounds if you're working from your own laptop as it's not so easy to TFTP to the device to do the transfer. Thankfully there's a few containers already on the device when we run a `dir flash` therefore we can skip this step for now. However if you are doing this
+Next up we need to do is configure our app-hosting parameters for iperf and assign a static IP address address/default gateway to the app.
+
+Also take note of the runtime parameter required for the Docker container is configured under app-resource in run-opts which we need to configure here.
+
+```
+app-hosting appid iperf
+ app-vnic AppGigEthernet vlan-access
+  vlan 4000 guest-interface 0
+   guest-ipaddress 10.10.20.101 netmask 255.255.255.0
+ app-default-gateway 10.10.20.254 guest-interface 0
+ app-resource docker
+  run-opts "--restart=unless-stopped -p 5201:5201/tcp -p 5201:5201/udp"
+```
+
+
+```
+app-hosting activate appid iperf
+```
+
+```
+app-hosting start appid iperf
+```
+
+```
+   show app-hosting list
+   App id                                   State
+   ---------------------------------------------------------
+   iperf                                 RUNNING
+```
+
+```
+   app-hosting stop appid iperf
+   app-hosting deactivate appid iperf
+   app-hosting uninstall appid iperf
+```
 
 ## Method 2 - Deploying via the GUI
 
