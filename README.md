@@ -8,15 +8,15 @@ The Catalyst 9000 switches have a x86 based CPU. One of the main drivers for inc
 
 It should be noted that usecases for this feature aren’t just limited to network automation and include IOT, Security and performance monitoring.
 
-## Prerequiesites
+## Prerequisites
 
 Before we get started we'll need a test environment, one of the easiest test environments you'll find is on the Cisco DevNet Sandbox which has a dedicated sandbox for 9300 application hosting. This are completely free and can in some cases be accessed within seconds. https://developer.cisco.com/docs/sandbox/#!overview/all-networking-sandboxes
 
 Please note you are free to use this with your own hardware or test environment. However the commands in this lab guide have been tested for the DevNet sandbox. 
 
-If you're lucky enough to have a 9300 ready to run this please note: The device requires a the 120GB USB external storage installed on the back of the device, thats why for this lab we will be utilising the DevNet 9300 sandbox
+If you're lucky enough to have a 9300 ready to run feel free to use it against this guide, however please note: The device requires a the 120GB USB external storage installed on the back of the device, thats why for this lab we will be utilising the DevNet 9300 sandbox.
 
-In reality we have a couple of options for deploying containers, with the traditonal IOS-XE CLI, through the switch webUI and with Cisco DNA-Centre controller. In this guide we will cover just the CLI deployment to give you an idea how things work under the hood but you're welcome to use either of the GUI options.
+In reality we have a couple of options for deploying containers, with the traditional IOS-XE CLI, through the switch webUI and with Cisco DNA-Centre controller. In this guide we will cover just the CLI deployment to give you an idea how things work under the hood but you're welcome to use either of the GUI options.
 
 Within this guide we'll be focusing on how to run iperf3 to carry out very basic bitrate testing on the network. The container we're going to run can be found [here](https://hub.docker.com/r/mlabbe/iperf3)
 
@@ -67,7 +67,6 @@ docker save mlabbe/iperf3:latest -o iperf3.tar
 ```
 
 As you can see from the below graphic, we then have our iperf3.tar file in our working directory ready for deployment.
-
 
 ![image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/docker-image.gif?raw=true)
 
