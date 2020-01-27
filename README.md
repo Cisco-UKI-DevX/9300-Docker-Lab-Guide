@@ -102,10 +102,9 @@ cat9k(config-app-hosting)# app-resource docker
 cat9k(config-app-hosting-docker)#  run-opts "--restart=unless-stopped -p 5201:5201/tcp -p 5201:5201/udp"
 ```
 
-
 ![image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/app-hosting-config.gif?raw=true)
 
-Now we've configured our interfaces and app profile parameters its time to install the container, to do this simply runt the below command, as I mentioned earlier in the sandbox its tricky to transfer across our .tar package but convieniently a iperf3 package named 'iperf3nick.tar' can be used in place. If your using your own environment simply replace the path below with you own.
+Now we've configured our interfaces and app profile parameters its time to install the container, to do this simply run the below command, as I mentioned earlier in the sandbox its tricky to transfer across our .tar package but convieniently a iperf3 package named 'iperf3nick.tar' is already on the flash: can be used in place. If your using your own environment simply replace the path below with you own.
 
 ```
 cat9k# app-hosting install appid iperf package flash:iperf3nick.tar
@@ -113,7 +112,7 @@ cat9k# app-hosting install appid iperf package flash:iperf3nick.tar
 ```
 ![image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/app-hosting-install.gif?raw=true)
 
-Now that's done lets activate our iperf app 
+When that's installed we can now activate our iperf app, give the command a couple of minutes to run it can take some time.
 
 ```
 cat9k# app-hosting activate appid iperf
@@ -121,7 +120,7 @@ cat9k# app-hosting activate appid iperf
 
 ![image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/app-hosting-activate.gif?raw=true)
 
-Activating doesn't actually start the app so we need to do that too, give the command a couple of minutes to run.
+Activating doesn't actually start the app so we need to do that too, again give the command a couple of minutes to run.
 
 ```
 cat9k# app-hosting start appid iperf
@@ -129,7 +128,7 @@ cat9k# app-hosting start appid iperf
 
 ![image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/app-hosting-start.gif?raw=true)
 
-When that's complete validate that our app is running with the below show command. This may take some time.
+When that completes, validate that our app is running with the below show command. This may take some time.
 
 ```
    cat9k# show app-hosting list
