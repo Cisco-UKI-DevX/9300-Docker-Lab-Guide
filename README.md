@@ -24,7 +24,35 @@ Within this guide we'll be focusing on how to run iPerfv3 to carry out very basi
 
 ### Step 1 - Packaging and transferring the Docker container to the device
 
+First thing we need to do is get our docker container onto the device that we're going to deploy on. To do this we need to have at least a basic understanding of docker and docker containers. A great overview can be found in the docker documentation [here](https://docs.docker.com/engine/docker-overview/). 
 
+Couple of brief things to cover 
+ * Every docker container has a dockerfile which looks like the below to describe how the container should behave when deployed. For example see our iperfv3 containers dockerfile below.
+ * Docker containers can be made available on a container exchange, the most popular is docker hub
+ 
+ ```
+ FROM alpine:latest
+#FROM alpine:3.11.2
+
+MAINTAINER Michel Labbe
+
+# build intial apk binary cache and install iperf3
+RUN apk add --no-cache iperf3 \
+    && adduser -S iperf
+
+USER iperf
+    
+# Expose the default iperf3 server ports
+EXPOSE 5201/tcp 5201/udp
+
+# entrypoint allows you to pass your arguments to the container at runtime
+# very similar to a binary you would run. For example, in the following
+# docker run -it <IMAGE> --help' is like running 'iperf --help'
+ENTRYPOINT ["iperf3"]
+
+# iperf3 -s = run in Server mode
+CMD ["-s"]
+```
 
 ### Step 2 - CLI config
 
