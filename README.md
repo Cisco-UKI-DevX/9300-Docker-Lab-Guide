@@ -2,7 +2,7 @@
 
 # Deploying Docker containers on Catalyst 9300/IOS-XE
 
-As we’ve discussed in the [past](https://github.com/sttrayno/Guestshell-Lab-Guide) when we're diving into network automation we often need an environment where we can package and run our software and scripts that we build. One of the most features of the Catalyst 9300 switch is the ability to run standard docker containers on the device.
+As we’ve discussed in the [past](https://github.com/sttrayno/Guestshell-Lab-Guide) when we dive into the world network automation we often need an environment where we can package and run our software and scripts that we build. One of the most features of the Catalyst 9300 switch is the ability to run standard docker containers on the device.
 
 The Catalyst 9000 switches have a x86 based CPU. One of the main drivers for including this was to allow for the running of applications on the switch. As of 16.12.1 the Catalyst 9300 supports a native docker engine allowing you to deploy docker applications straight onto the infrastructure which I plan on guiding you through the process of getting started with in this lab.
 
@@ -16,11 +16,15 @@ Please note you are free to use this with your own hardware or test environment.
 
 If you're lucky enough to have a 9300 ready to run this please note: The device requires a the 120GB USB external storage installed on the back of the device, thats why for this lab we will be utilising the DevNet 9300 sandbox
 
+In this guide we have 2 methods of running the containers, with the CLI or through the GUI. For completeness we'll cover both in this guide, your welcome to just do one (GUI is by far the easiest).
+
 ## Method 1 - Deploying via the CLI
 
 ### Step 1 - Packaging and transferring the Docker container to the device
 
+Before we get started first thing we need to do is package our docker container and transfer to the device itself. 
 
+When it comes to transfering the .tar file we've created on the sandbox this is actually trickier than it sounds if you're working from your own laptop as it's not so easy to TFTP to the device to do the transfer. Thankfully there's a few containers already on the device when we run a `dir flash` therefore we can skip this step for now. However if you are doing this
 
 ## Method 2 - Deploying via the GUI
 
