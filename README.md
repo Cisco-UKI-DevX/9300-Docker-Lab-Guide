@@ -20,8 +20,6 @@ In this guide we have 2 methods of running the containers, with the CLI or throu
 
 Within this guide we'll be focusing on how to run iperf3 to carry out very basic testing on the network. The container we're going to run can be found [here](https://hub.docker.com/r/mlabbe/iperf3)
 
-## Method 1 - Deploying via the CLI
-
 ### Step 1 - Packaging and transferring the Docker container to the device
 
 First thing we need to do is get our docker container onto the device that we're going to deploy on. To do this we need to have at least a basic understanding of docker and docker containers. A great overview can be found in the docker documentation [here](https://docs.docker.com/engine/docker-overview/). In the context of the rest of this guide and if you're new to containers just think of them as a way in which we can build, ship, and run applications (dependancies and all).
@@ -70,6 +68,9 @@ docker save mlabbe/iperf3:latest -o iperf3.tar
 
 As you can see from the below graphic, we then have our iperf3.tar file in our working directory ready for deployment.
 
+
+[!image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/docker-image.gif?raw=true)
+
 Alternatively, if you have a dockerfile like the one above you can build the image by using the command while in the same working directory as the file which must be named `Dockerfile`
 
 ```
@@ -81,6 +82,8 @@ You can then build the .tar package with the same save argument
 ```
 docker save mlabbe/iperf3:latest -o iperf3.tar
 ```
+
+[!image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/dockerfile.gif?raw=true)
 
 Once you have your package you can transfer it to the device using TFTP, USB or any other method thats supported. Just ensure the .tar file is in the flash: directory as we'll need it later.
 
