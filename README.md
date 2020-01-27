@@ -109,7 +109,7 @@ cat9k(config-app-hosting-docker)#  run-opts "--restart=unless-stopped -p 5201:52
 Now we've configured our interfaces and app profile parameters its time to install the container, to do this simply runt the below command, as I mentioned earlier in the sandbox its tricky to transfer across our .tar package but convieniently a iperf3 package named 'iperf3nick.tar' can be used in place. If your using your own environment simply replace the path below with you own.
 
 ```
-app-hosting install appid iperf package flash:iperf3nick.tar
+cat9k# app-hosting install appid iperf package flash:iperf3nick.tar
 
 ```
 ![image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/app-hosting-install.gif?raw=true)
@@ -117,30 +117,36 @@ app-hosting install appid iperf package flash:iperf3nick.tar
 Now that's done lets activate our iperf app 
 
 ```
-app-hosting activate appid iperf
+cat9k# app-hosting activate appid iperf
 ```
+
+![image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/app-hosting-activate.gif?raw=true)
 
 Activating doesn't actually start the app so we need to do that too, give the command a couple of minutes to run.
 
 ```
-app-hosting start appid iperf
+cat9k# app-hosting start appid iperf
 ```
 
-When that's complete validate that our app is running with the below show command.
+![image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/app-hosting-start.gif?raw=true)
+
+When that's complete validate that our app is running with the below show command. This may take some time.
 
 ```
-   show app-hosting list
+   cat9k# show app-hosting list
    App id                                   State
    ---------------------------------------------------------
    iperf                                 RUNNING
 ```
 
+![image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/show-app-hosting.gif?raw=true)
+
 Congratulations, your app has now been deployed. Keep reference these additional commands which can be used to stop, deactivate and uninstall our applcation as needed. You may now proceed to the 'Testing our application section'
 
 ```
-   app-hosting stop appid iperf
-   app-hosting deactivate appid iperf
-   app-hosting uninstall appid iperf
+   cat9k# app-hosting stop appid iperf
+   cat9k# app-hosting deactivate appid iperf
+   cat9k# app-hosting uninstall appid iperf
 ```
 
 ## Method 2 - Deploying via the GUI
