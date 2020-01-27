@@ -92,14 +92,26 @@ app-hosting appid iperf
   run-opts "--restart=unless-stopped -p 5201:5201/tcp -p 5201:5201/udp"
 ```
 
+Now we've configured our interfaces and app profile parameters its time to install the container, to do this simply runt the below command, as I mentioned earlier in the sandbox its tricky to transfer across our .tar package but convieniently a iperf3 package named 'iperf3nick.tar' can be used in place. If your using your own environment simply replace the path below with you own.
+
+```
+app-hosting install appid iperf package flash:iperf3nick.tar
+
+```
+
+Now that's done lets activate our iperf app
 
 ```
 app-hosting activate appid iperf
 ```
 
+Activating doesn't actually start the app so we need to do that too, give the command a couple of minutes to run.
+
 ```
 app-hosting start appid iperf
 ```
+
+When that's complete validate that our app is running with the below show command.
 
 ```
    show app-hosting list
@@ -107,6 +119,8 @@ app-hosting start appid iperf
    ---------------------------------------------------------
    iperf                                 RUNNING
 ```
+
+Congratulations, your app has now been deployed. Keep reference these additional commands which can be used to stop, deactivate and uninstall our applcation as needed. You may now proceed to the 'Testing our application section'
 
 ```
    app-hosting stop appid iperf
