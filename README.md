@@ -157,8 +157,7 @@ Make sure iperf3 is installed. If you're not sure how to you can find a handy gu
 ```
 iperf3 -c 10.10.20.101 -i 1 -t 30
 ```
-
-After runnign the command if a bitrate is reported back as shown below your application is operating correctly and has connectivity.
+After running the command if a bitrate is reported back as shown below your application is operating correctly and has connectivity.
 
 ![image](https://github.com/sttrayno/9300-Docker-Lab-Guide/blob/master/images/iperf.gif?raw=true)
 
