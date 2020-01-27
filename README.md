@@ -16,9 +16,9 @@ Please note you are free to use this with your own hardware or test environment.
 
 If you're lucky enough to have a 9300 ready to run this please note: The device requires a the 120GB USB external storage installed on the back of the device, thats why for this lab we will be utilising the DevNet 9300 sandbox
 
-In this guide we have 2 methods of running the containers, with the CLI or through the GUI. For completeness we'll cover both in this guide, your welcome to just do one (GUI is by far the easiest).
+In reality we have a couple of options for deploying containers, with the traditonal IOS-XE CLI, through the switch webUI and with Cisco DNA-Centre controller. In this guide we will cover just the CLI deployment to give you an idea how things work under the hood but you're welcome to use either of the GUI options.
 
-Within this guide we'll be focusing on how to run iperf3 to carry out very basic testing on the network. The container we're going to run can be found [here](https://hub.docker.com/r/mlabbe/iperf3)
+Within this guide we'll be focusing on how to run iperf3 to carry out very basic bitrate testing on the network. The container we're going to run can be found [here](https://hub.docker.com/r/mlabbe/iperf3)
 
 ### Step 1 - Packaging and transferring the Docker container to the device
 
