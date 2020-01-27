@@ -2,9 +2,9 @@
 
 # Deploying Docker containers on Catalyst 9300/IOS-XE
 
-As we’ve discussed in the [past](https://github.com/sttrayno/Guestshell-Lab-Guide) when we dive into the world network automation we often need an environment where we can package and run our software and scripts that we build. One of the most features of the Catalyst 9300 switch is the ability to run standard docker containers on the device.
+As we’ve discussed in the [past](https://github.com/sttrayno/Guestshell-Lab-Guide) when we dive into the world network automation we often need an environment where we can package and run our software or scripts that we build. This is what makes one of the most interesting features of the new Catalyst 9300 switch is the ability to run standard docker containers on the devices x86 based CPU. 
 
-The Catalyst 9000 switches have a x86 based CPU. One of the main drivers for including this was to allow for the running of applications on the switch. As of 16.12.1 the Catalyst 9300 supports a native docker engine allowing you to deploy docker applications straight onto the infrastructure which I plan on guiding you through the process of getting started with in this lab.
+One of the main drivers for including x86 architecture this was to allow for the running of applications on the switch. As of 16.12.1 the Catalyst 9300 supports a native docker engine allowing you to deploy docker applications straight onto the infrastructure which I plan on guiding you through the process of getting started with in this lab.
 
 It should be noted that usecases for this feature aren’t just limited to network automation and include IOT, Security and performance monitoring.
 
