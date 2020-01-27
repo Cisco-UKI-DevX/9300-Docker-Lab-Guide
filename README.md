@@ -18,7 +18,7 @@ If you're lucky enough to have a 9300 ready to run this please note: The device 
 
 In this guide we have 2 methods of running the containers, with the CLI or through the GUI. For completeness we'll cover both in this guide, your welcome to just do one (GUI is by far the easiest).
 
-Within this guide we'll be focusing on how to run iPerfv3 to carry out very basic testing on the network. The container we're going to run can be found [here](https://hub.docker.com/r/mlabbe/iperf3)
+Within this guide we'll be focusing on how to run iperf3 to carry out very basic testing on the network. The container we're going to run can be found [here](https://hub.docker.com/r/mlabbe/iperf3)
 
 ## Method 1 - Deploying via the CLI
 
@@ -143,4 +143,4 @@ Congratulations, your app has now been deployed. Keep reference these additional
 
 ## Final thoughts 
 
-For now our application isn't very interesting that we're running, they're are a few on the box already so I'd recommend deploying a couple to get yourself used to the process and trying out some of the different options. At somepoint we'll expand these exercises by building our own custom application packaged in a docker container, then look to deploy it in this hosting environment but for now I hope this lab has given you a brief taster of working with the Docker environment in the Catalyst 9300.
+For now our application isn't very interesting that we're running and provides limited insight, but if you're using the sandbox they're are a few more apps already so I'd recommend deploying a couple to get yourself used to the process and trying out some of the different options. At somepoint we'll expand these exercises by building our own custom application packaged in a docker container, then look to deploy it in this hosting environment but for now I hope this lab has given you a brief taster of working with the Docker environment in the Catalyst 9300.
